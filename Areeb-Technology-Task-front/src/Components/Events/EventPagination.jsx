@@ -11,22 +11,20 @@ const EventPagination = ({ totalRecords, rows = 15, onPageChange, current }) => 
 
   const getVisiblePages = () => {
     const visiblePages = [];
-    const maxVisible = 5; // Maximum visible page numbers
+    const maxVisible = 5; 
 
     if (totalPages <= maxVisible) {
-      // Show all pages if total is less than max visible
       for (let i = 1; i <= totalPages; i++) {
         visiblePages.push(i);
       }
     } else {
-      // Show first, last, and pages around current
       const start = Math.max(2, currentPage - 1);
       const end = Math.min(totalPages - 1, currentPage + 1);
 
-      visiblePages.push(1); // Always show first page
+      visiblePages.push(1);
 
       if (start > 2) {
-        visiblePages.push("..."); // Ellipsis for skipped pages
+        visiblePages.push("...");
       }
 
       for (let i = start; i <= end; i++) {
@@ -47,7 +45,7 @@ const EventPagination = ({ totalRecords, rows = 15, onPageChange, current }) => 
     totalRecords > rows && (
       <div className="flex justify-center my-8">
         <div className="flex flex-wrap gap-1 sm:gap-2 justify-center items-center">
-          {/* Previous Button */}
+          
           <button
             onClick={() => handlePageChange(Math.max(1, currentPage - 1))}
             disabled={currentPage === 1}
@@ -70,7 +68,6 @@ const EventPagination = ({ totalRecords, rows = 15, onPageChange, current }) => 
             Previous
           </button>
 
-          {/* Page Numbers */}
           {getVisiblePages().map((page, index) =>
             page === "..." ? (
               <span key={`ellipsis-${index}`} className="px-2 py-1 text-gray-500">
@@ -91,7 +88,6 @@ const EventPagination = ({ totalRecords, rows = 15, onPageChange, current }) => 
             )
           )}
 
-          {/* Next Button */}
           <button
             onClick={() => handlePageChange(Math.min(totalPages, currentPage + 1))}
             disabled={currentPage === totalPages}

@@ -26,7 +26,6 @@ function SingleEvent() {
         setUserData(response.data.data.user);
       }
     } catch (error) {
-      console.log(error);
       navigate("/auth/login");
     } finally {
       setBookLoading(false);
@@ -38,11 +37,10 @@ function SingleEvent() {
         `${import.meta.env.VITE_BASE_HOST_URL}/events/${id}`
       );
       if (response.data) {
-        // console.log("resss",response.data.data.event);
         setEvent(response.data.data.event);
       }
     } catch (error) {
-      console.log(error);
+      navigate("/");
     }
   };
 
@@ -59,13 +57,10 @@ function SingleEvent() {
           },
         }
       );
-      console.log(res.data);
       if (res.data) {
-        console.log(res.data);
         window.location.reload();
       }
     } catch (error) {
-      console.log(error);
       setError("*" + error.response.data.message);
     } finally {
       setBookLoading(false);
@@ -87,7 +82,6 @@ function SingleEvent() {
         navigate("/");
       }
     } catch (error) {
-      console.log(error);
       setError("*" + error.response.data.message);
     } finally {
       setDeleteLoading(false);
@@ -108,8 +102,6 @@ function SingleEvent() {
         setBooked(isBooked);
       }
     }
-    // console.log(event, userData);
-    // console.log("booked", booked);
   }, [event, userData, booked]);
 
   if (!event || !userData) {

@@ -28,10 +28,8 @@ const Home = () => {
 
         if (response.data) {
           setUserData(response.data.data.user);
-          console.log(response.data.data.user);
         }
       } catch (error) {
-        console.log(error);
         navigate("/auth/login");
       }
     };
@@ -44,7 +42,6 @@ const Home = () => {
       setEvents(data.data.events);
       setLoading(false);
       setTotalRecords(data.total);
-      // console.log(data.total);
     };
     getUserInfo(localStorage.getItem("Areeb-token"));
     getEvents();

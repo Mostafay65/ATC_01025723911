@@ -27,7 +27,6 @@ const Navbar = () => {
         setIsSuccess(true);
       }
     } catch (error) {
-      // console.log(error);
       navigate("/auth/login");
     }
   };

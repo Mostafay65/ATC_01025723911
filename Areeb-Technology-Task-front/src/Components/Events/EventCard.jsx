@@ -4,7 +4,6 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Button } from "primereact/button";
 const EventCard = ({ event, user }) => {
-  // console.log(event, user);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [bookLoading, setBookLoading] = useState(false);
   const [booked, setBooked] = useState(event.participants.includes(user?._id || false));
@@ -23,7 +22,6 @@ const EventCard = ({ event, user }) => {
   };
 
   const book = async () => {
-    console.log(user);
     if (!user) navigate("/auth/login");
     try {
       setBookLoading(true);
@@ -36,13 +34,11 @@ const EventCard = ({ event, user }) => {
           },
         }
       );
-      console.log(res.data);
       if (res.data) {
-        console.log(res.data);
         window.location.reload();
       }
     } catch (error) {
-      console.log(error);
+      
     } finally {
       setBookLoading(false);
     }

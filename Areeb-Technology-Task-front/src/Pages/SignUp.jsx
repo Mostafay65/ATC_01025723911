@@ -17,7 +17,6 @@ const SignUp = () => {
 
   const handleSubmit = async () => {
     const errors = [];
-    // Add validation logic here
     if (name.length < 4) errors.push(" Name Must be at least 4 charcters");
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) errors.push(` ${email} is not a valid email`);
@@ -28,7 +27,6 @@ const SignUp = () => {
     setErrors(errors);
     if (errors.length === 0) {
       try {
-        console.log(`${import.meta.env.VITE_BASE_HOST_URL}/auth/signup`);
         const res = await axios.post(
           `${import.meta.env.VITE_BASE_HOST_URL}/auth/signup`,
           {
@@ -42,7 +40,6 @@ const SignUp = () => {
         navigate("/");
         window.location.reload();
       } catch (err) {
-        console.log(err);
         setErrors([err.message]);
       }
     }
